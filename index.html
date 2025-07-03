@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Life Expectancy Visualization</title>
+    <script src="https://code.highcharts.com/12.3.0/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/12.3.0/modules/data.js"></script>
+    <script src="https://code.highcharts.com/12.3.0/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/12.3.0/modules/accessibility.js"></script>
+    <link rel="stylesheet" href="css/twicon/twicon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+    <div class="container header-content-wrapper"> 
+        <div class="brand-section">
+            <i class="_tw_2085917590 header-icon"></i>
+            <h1>Taiwan Life Expectancy Visualization</h1> 
+        </div>
+    </div>
+    </header>
+
+    
+    <div class="tab-navigation">
+            <button class="tab-button active" data-tab="meanMapsSection">LE at Birth (Posterior Mean)</button>
+            <button class="tab-button" data-tab="sdMapsSection">LE at Birth Standard Deviation</button> 
+            <button class="tab-button" data-tab="topBottomSection">Top/Bottom 10 LE Townships</button> 
+        </div>
+        
+
+    <div class="controls">
+            <label for="yearSlider">Select the Year from 2000 to 2021</label>
+            <div class="slider-wrapper">
+                <input type="range" id="yearSlider" min="2000" max="2021" value="2000" step="1" class="slider">
+            </div>
+            <button id="playPauseButton">Play</button> 
+            <button id="resetButton">Reset</button>
+        </div>
+
+    <div class="container">
+        <div id="meanMapsSection" class="chart-section tab-content active">
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="LEmeanMap_male" class="map-chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="LEmeanMap_female" class="map-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="sdMapsSection" class="chart-section tab-content">
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="LEsdMap_male" class="map-chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="LEsdMap_female" class="map-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="topBottomSection" class="chart-section tab-content">
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="LEtop10_male" class="bar-chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="LEtop10_female" class="bar-chart"></div>
+                </div>
+        </div>
+
+        <div class="chart-section">
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="LEbottom10_male" class="bar-chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="LEbottom10_female" class="bar-chart"></div>
+                </div>
+        </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Jing-Zhong Wang. All rights reserved.</p> 
+            <p>Data Source: Jing-Zhong Wang</p>
+        </div>
+    </footer>
+
+    <script src="js/chart.js"></script>
+</body>
+</html>
