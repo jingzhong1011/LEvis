@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Play animation function
     function playAnimation() {
         isPlaying = true;
-        playPauseButton.textContent = 'Pause';
+        playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
         animationInterval = setInterval(() => {
             let currentYear = parseInt(yearSlider.value);
             if (currentYear < sliderMaxYear) {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Pause animation function
     function pauseAnimation() {
         isPlaying = false;
-        playPauseButton.textContent = 'Play';
+        playPauseButton.innerHTML = '<i class="fa-solid fa-play"></i>';
         clearInterval(animationInterval);
     }
 
