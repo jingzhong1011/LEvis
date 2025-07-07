@@ -68,31 +68,53 @@ h1 {
 /* Header Styles */
 .main-header {
     background-color: var(--main-color-3);
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 15px 25px; /* 增加整體 padding */
+    display: flex; /* 改為 Flex 容器 */
+    flex-direction: row; /* 子元素橫向排列 */
+    align-items: center; /* 垂直置中對齊 */
+    justify-content: space-between; /* 將子元素推到兩端 */
     min-height: 1px;
     width: 100%;
     box-sizing: border-box;
 }
 
+/* Adjusted header-content-wrapper */
 .header-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-grow: 1;
-    padding: 0 25px;
-    margin: 0 auto;
-    max-width: 1400px;
+    display: flex; /* 保持 Flex 容器以便內部對齊 */
+    flex-direction: column; /* 保持 column，因為 brand-section 內部的內容是垂直排列的 */
+    align-items: center; /* 讓 brand-section 在這個 wrapper 內部水平置中 */
+    flex-grow: 1; /* 讓它佔據所有可用空間 */
+    padding: 0; /* 移除 padding，由 main-header 統一控制 */
+    margin: 0; /* 移除 margin */
+    max-width: none; /* 允許它擴展 */
 }
+
+/* Return link styles */
+.return.link {
+    font-size: 1.2em; /* 調整圖示大小 */
+    color: var(--text-color-l); /* 調整顏色 */
+    margin-right: 20px; /* 給 brand-section 一些間距 */
+    white-space: nowrap; /* 防止連結換行 */
+}
+
+.return.link a {
+    color: inherit; /* 繼承父元素的顏色 */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.return.link a:hover {
+    color: var(--main-color-1); /* 懸停效果 */
+}
+
 
 .brand-section {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* 確保 brand-section 內部內容置中 */
     margin-top: 0;
     margin-bottom: 0;
-    width: 100%;
+    width: auto; /* 讓它根據內容自動調整寬度 */
     padding: 0;
 }
 
@@ -259,7 +281,7 @@ h1 {
     top: 15px; /* 調整：增加 top 值，避免旋轉後與刻度線重疊 */
     left: 50%;
     /* 調整：逆時針旋轉 45 度 */
-    transform: translateX(-50%) rotate(-45deg); 
+    transform: translateX(-50%) rotate(-45deg);
     font-size: 0.7em;
     color: var(--text-color-l);
     white-space: nowrap;
@@ -504,15 +526,30 @@ h1 {
 }
 
 @media (max-width: 992px) {
+    .main-header {
+        flex-direction: column; /* 在小螢幕上垂直堆疊 */
+        align-items: center; /* 垂直堆疊時置中 */
+        padding: 10px 15px; /* 調整 padding */
+    }
+
+    .return.link {
+        margin: 0 0 10px 0; /* 垂直堆疊時，底部增加間距 */
+        align-self: flex-start; /* 讓 return link 在堆疊時靠左 */
+    }
+
+    .header-content-wrapper {
+        width: 100%; /* 佔滿寬度 */
+        justify-content: center; /* 讓內部 brand-section 置中 */
+    }
+
     .brand-section {
-        justify-content: flex-start;
-        align-items: center;
+        justify-content: center; /* 確保 brand-section 內容置中 */
         margin-bottom: 8px;
         padding-bottom: 0;
     }
     .brand-section h1 {
         font-size: 1.1em;
-        text-align: left;
+        text-align: center; /* 在小螢幕上置中 */
         padding-bottom: 0;
         margin-top: 0;
     }
@@ -571,7 +608,7 @@ h1 {
         font-size: 0.6em; /* Smaller font */
         top: 8px;
         /* 調整：逆時針旋轉 45 度 */
-        transform: translateX(-50%) rotate(-45deg); 
+        transform: translateX(-50%) rotate(-45deg);
     }
     .tick-mark {
         height: 6px;
@@ -648,7 +685,7 @@ h1 {
         font-size: 0.55em; /* Smaller font */
         top: 6px;
         /* 調整：逆時針旋轉 45 度 */
-        transform: translateX(-50%) rotate(-45deg); 
+        transform: translateX(-50%) rotate(-45deg);
     }
     .slider-start-year {
         left: -20px;
@@ -693,7 +730,7 @@ h1 {
         font-size: 0.5em; /* Smallest font */
         top: 5px;
         /* 調整：逆時針旋轉 45 度 */
-        transform: translateX(-50%) rotate(-45deg); 
+        transform: translateX(-50%) rotate(-45deg);
     }
     .slider-start-year {
         left: -15px;
