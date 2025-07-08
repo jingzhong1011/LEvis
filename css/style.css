@@ -73,8 +73,7 @@ h1 {
     flex-direction: row; /* 子元素橫向排列 */
     align-items: center; /* 垂直置中對齊 */
     justify-content: space-between; /* 將子元素推到兩端 */
-    min-height: 1px;
-    width: 100%;
+    /* 移除 min-height 和 width: 100%; 讓內容決定高度 */
     box-sizing: border-box;
 }
 
@@ -82,7 +81,7 @@ h1 {
 .header-content-wrapper {
     display: flex; /* 保持 Flex 容器以便內部對齊 */
     flex-direction: column; /* 保持 column，因為 brand-section 內部的內容是垂直排列的 */
-    align-items: center; /* 讓 brand-section 在這個 wrapper 內部水平置中 */
+    align-items: flex-start; /* 讓 brand-section 在這個 wrapper 內部水平靠左對齊 */
     flex-grow: 1; /* 讓它佔據所有可用空間 */
     padding: 0; /* 移除 padding，由 main-header 統一控制 */
     margin: 0; /* 移除 margin */
@@ -93,7 +92,7 @@ h1 {
 .return.link {
     font-size: 1.2em; /* 調整圖示大小 */
     color: var(--text-color-l); /* 調整顏色 */
-    margin-right: 20px; /* 給 brand-section 一些間距 */
+    margin-left: 20px; /* 給 brand-section 和連結一些間距 */
     white-space: nowrap; /* 防止連結換行 */
 }
 
@@ -111,7 +110,7 @@ h1 {
 .brand-section {
     display: flex;
     align-items: center;
-    justify-content: center; /* 確保 brand-section 內部內容置中 */
+    justify-content: flex-start; /* 確保 brand-section 內部內容靠左 */
     margin-top: 0;
     margin-bottom: 0;
     width: auto; /* 讓它根據內容自動調整寬度 */
@@ -526,32 +525,31 @@ h1 {
 }
 
 @media (max-width: 992px) {
+    /* main-header 不再改變 flex-direction */
     .main-header {
-        flex-direction: column; /* 在小螢幕上垂直堆疊 */
-        align-items: center; /* 垂直堆疊時置中 */
-        padding: 10px 15px; /* 調整 padding */
+        padding: 10px 15px;
     }
 
+    /* 移除針對 return.link 的垂直堆疊相關樣式 */
     .return.link {
-        margin: 0 0 10px 0; /* 垂直堆疊時，底部增加間距 */
-        align-self: flex-start; /* 讓 return link 在堆疊時靠左 */
+        margin-right: 15px; /* 微調右側間距 */
+        margin-left: auto; /* 推到最右邊 */
+        align-self: center; /* 垂直置中對齊 */
     }
 
+    /* 移除 header-content-wrapper 的寬度設定和內容置中 */
     .header-content-wrapper {
-        width: 100%; /* 佔滿寬度 */
-        justify-content: center; /* 讓內部 brand-section 置中 */
+        flex-grow: 1; /* 仍然佔據所有可用空間 */
+        align-items: flex-start; /* 讓 brand-section 在這個 wrapper 內部水平靠左對齊 */
     }
 
     .brand-section {
-        justify-content: center; /* 確保 brand-section 內容置中 */
-        margin-bottom: 8px;
-        padding-bottom: 0;
+        justify-content: flex-start; /* 確保 brand-section 內容靠左 */
+        margin-bottom: 0; /* 移除底部間距 */
     }
     .brand-section h1 {
         font-size: 1.1em;
-        text-align: center; /* 在小螢幕上置中 */
-        padding-bottom: 0;
-        margin-top: 0;
+        text-align: left; /* 保持靠左 */
     }
     .brand-section h1::after {
         font-size: 0.4em;
@@ -559,11 +557,8 @@ h1 {
         left: calc(100% + 5px);
     }
     .header-icon {
-        width: 20px;
-        height: 20px;
         font-size: 20px;
         margin-right: 7px;
-        margin-bottom: 0;
     }
 
     /* Controls */
